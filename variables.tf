@@ -17,56 +17,67 @@ variable "auditors" {
 # ------------------------------------------------------------------------------
 
 variable "assume_master_financialaudit_policy_description" {
+  type        = string
   description = "The description to associate with the IAM policy that allows assumption of the role that allows access to the Billing policy in the Master account."
   default     = "Allow assumption of the FinancialAudit role in the Master account."
 }
 
 variable "assume_master_financialaudit_policy_name" {
+  type        = string
   description = "The name to assign the IAM policy that allows assumption of the role that allows access to the Billing policy in the Master account."
   default     = "Master-AssumeFinancialAudit"
 }
 
 variable "assume_various_securityaudit_policy_description" {
+  type        = string
   description = "The description to associate with the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts."
   default     = "Allow assumption of the SecurityAudit role in various accounts."
 }
 
 variable "assume_various_securityaudit_policy_name" {
+  type        = string
   description = "The name to assign the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts."
   default     = "Various-AssumeSecurityAudit"
 }
 
 variable "aws_region" {
+  type        = string
   description = "The AWS region where the non-global resources are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
 }
 
 variable "financial_audit_users_group_name" {
+  type        = string
   description = "The name of the group to be created for financial audit users."
   default     = "financial_auditors"
 }
 
 variable "master_financialaudit_role_description" {
+  type        = string
   description = "The description to associate with the IAM role that allows access to the Billing policy in the Master account."
   default     = "Allows sufficient access to billing information."
 }
 
 variable "master_financialaudit_role_name" {
+  type        = string
   description = "The name to assign the IAM role that allows access to the Billing policy in the Master account."
   default     = "FinancialAudit"
 }
 
 variable "security_audit_users_group_name" {
+  type        = string
   description = "The name of the group to be created for security audit users."
   default     = "security_auditors"
 }
 
 variable "securityauditextras_policy_description" {
+  type        = string
   description = "The description to associate with the IAM policy that gives access to additional permissions required by security auditors."
   default     = "Allows access to additional resources required by security auditors."
 }
 
 variable "securityauditextras_policy_name" {
+  type        = string
   description = "The name to assign the IAM policy that gives access to additional permissions required by security auditors."
   default     = "SecurityAuditExtras"
 }
@@ -78,11 +89,13 @@ variable "tags" {
 }
 
 variable "various_securityaudit_role_description" {
+  type        = string
   description = "The description to associate with the IAM role that allows access to the SecurityAudit policy in various AWS accounts."
   default     = "Allows read-only access to resources for security auditors."
 }
 
 variable "various_securityaudit_role_name" {
+  type        = string
   description = "The name to assign the IAM role that allows access to the SecurityAudit policy in various AWS accounts."
   default     = "SecurityAudit"
 }
