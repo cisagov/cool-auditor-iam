@@ -1,5 +1,10 @@
 # IAM policy document that allows assumption of the SecurityAudit role
-# in the various accounts.
+# in the various accounts where security auditing is required.
+#
+# Two accounts are excluded from this list:
+# - The Master account because is out of the scope of the security auditors.
+# - The Users account because we directly attach the SecurityAudit role
+#   to the security_audit_users group (see below).
 data "aws_iam_policy_document" "assume_various_securityaudit_roles_doc" {
   statement {
     effect = "Allow"
