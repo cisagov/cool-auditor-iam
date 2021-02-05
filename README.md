@@ -4,7 +4,7 @@
 
 This project is used to manage IAM permissions for auditor users.
 
-## Pre-Requisites ##
+## Pre-requisites ##
 
 The user accounts for all auditors must have been previously created (we
 recommend using the
