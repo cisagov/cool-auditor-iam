@@ -20,9 +20,9 @@ repository to create users).
 
   ```hcl
   auditors = {
-    "first1.last1"    = { "roles" = ["security_audit"] },
-    "first2.last2"    = { "roles" = ["financial_audit"] },
-    "first3.last3"    = { "roles" = ["financial_audit", "security_audit"] },
+    "firstname1.lastname1"    = { "roles" = ["security_audit"] },
+    "firstname2.lastname2"    = { "roles" = ["financial_audit"] },
+    "firstname3.lastname3"    = { "roles" = ["financial_audit", "security_audit"] },
   }
   ```
 
