@@ -2,38 +2,33 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-auditor-iam/workflows/build/badge.svg)](https://github.com/cisagov/cool-auditor-iam/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
+This project is used to manage IAM permissions for auditor users.
 
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+## Pre-requisites ##
+
+The user accounts for all auditors must have been previously created (we
+recommend using the
+[`cool-users-non-admin`](https://github.com/cisagov/cool-users-non-admin)
+repository to create users).
 
 ## Usage ##
 
-```hcl
-module "example" {
-  source = "github.com/cisagov/cool-auditor-iam"
+1. Create a Terraform workspace (if you haven't already done so) by running
+   `terraform workspace new <workspace_name>`
+1. Create a `<workspace_name>.tfvars` file with all of the required
+  variables (see [Inputs](#Inputs) below for details):
 
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
-
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
+  ```hcl
+  auditors = {
+    "firstname1.lastname1"    = { "roles" = ["security_audit"] },
+    "firstname2.lastname2"    = { "roles" = ["financial_audit"] },
+    "firstname3.lastname3"    = { "roles" = ["financial_audit", "security_audit"] },
   }
-}
-```
+  ```
 
-## Examples ##
-
-* [Deploying into the default VPC](https://github.com/cisagov/cool-auditor-iam/tree/develop/examples/default_vpc)
+1. Run the command `terraform init`.
+1. Run the command `terraform apply
+  -var-file=<workspace_name>.tfvars`.
 
 ## Requirements ##
 
@@ -47,39 +42,47 @@ module "example" {
 | Name | Version |
 |------|---------|
 | aws | ~> 3.0 |
+| aws.audit | ~> 3.0 |
+| aws.dns | ~> 3.0 |
+| aws.images | ~> 3.0 |
+| aws.logarchive | ~> 3.0 |
+| aws.master | ~> 3.0 |
+| aws.sharedservices | ~> 3.0 |
+| aws.terraform | ~> 3.0 |
+| aws.users | ~> 3.0 |
+| terraform | n/a |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ami_owner_account_id | The ID of the AWS account that owns the Example AMI, or "self" if the AMI is owned by the same account as the provisioner. | `string` | `self` | no |
-| aws_availability_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.) | `string` | `a` | no |
-| aws_region | The AWS region to deploy into (e.g. us-east-1) | `string` | `us-east-1` | no |
-| subnet_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0) | `string` | n/a | yes |
+| assume_master_financialaudit_policy_description | The description to associate with the IAM policy that allows assumption of the role that allows access to the Billing policy in the Master account. | `string` | `Allow assumption of the FinancialAudit role in the Master account.` | no |
+| assume_master_financialaudit_policy_name | The name to assign the IAM policy that allows assumption of the role that allows access to the Billing policy in the Master account. | `string` | `Master-AssumeFinancialAudit` | no |
+| assume_various_securityaudit_policy_description | The description to associate with the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts. | `string` | `Allow assumption of the SecurityAudit role in various accounts.` | no |
+| assume_various_securityaudit_policy_name | The name to assign the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts. | `string` | `Various-AssumeSecurityAudit` | no |
+| auditors | A map containing the usernames of each auditor and a list of audit roles assigned to that user.  Example: { "firstname1.lastname1" = { "roles" = [ "financial_audit", "security_audit" ] },  "firstname2.lastname2" = { "roles" = [ "security_audit" ] } } | `map` | n/a | yes |
+| aws_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| financial_audit_users_group_name | The name of the group to be created for financial audit users. | `string` | `financial_auditors` | no |
+| master_financialaudit_role_description | The description to associate with the IAM role that allows access to the Billing policy in the Master account. | `string` | `Allows sufficient access to billing information.` | no |
+| master_financialaudit_role_name | The name to assign the IAM role that allows access to the Billing policy in the Master account. | `string` | `FinancialAudit` | no |
+| security_audit_users_group_name | The name of the group to be created for security audit users. | `string` | `security_auditors` | no |
+| securityauditextras_policy_description | The description to associate with the IAM policy that gives access to additional permissions required by security auditors. | `string` | `Allows access to additional resources required by security auditors.` | no |
+| securityauditextras_policy_name | The name to assign the IAM policy that gives access to additional permissions required by security auditors. | `string` | `SecurityAuditExtras` | no |
 | tags | Tags to apply to all AWS resources created | `map(string)` | `{}` | no |
+| various_securityaudit_role_description | The description to associate with the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `Allows read-only access to resources for security auditors.` | no |
+| various_securityaudit_role_name | The name to assign the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `SecurityAudit` | no |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| arn | The EC2 instance ARN |
-| availability_zone | The AZ where the EC2 instance is deployed |
-| id | The EC2 instance ID |
-| private_ip | The private IP of the EC2 instance |
-| subnet_id | The ID of the subnet where the EC2 instance is deployed |
+| financial_audit_group | The group of financial auditors |
+| security_audit_group | The group of security auditors |
 
 ## Notes ##
 
 Running `pre-commit` requires running `terraform init` in every directory that
-contains Terraform code. In this repository, these are the main directory and
-every directory under `examples/`.
-
-## New Repositories from a Skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
+contains Terraform code. In this repository, this is only the main directory.
 
 ## Contributing ##
 
