@@ -5,9 +5,8 @@
 # ------------------------------------------------------------------------------
 
 variable "auditors" {
-  type = map
-  # Currently-defined audit roles: financial_audit, security_audit
-  description = "A map containing the usernames of each auditor and a list of audit roles assigned to that user.  Example: { \"firstname1.lastname1\" = { \"roles\" = [ \"financial_audit\", \"security_audit\" ] },  \"firstname2.lastname2\" = { \"roles\" = [ \"security_audit\" ] } }"
+  type        = map(map(list(string)))
+  description = "A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  \"financial_audit\" and \"security_audit\".  Example: { \"firstname1.lastname1\" = { \"roles\" = [ \"financial_audit\", \"security_audit\" ] },  \"firstname2.lastname2\" = { \"roles\" = [ \"security_audit\" ] } }"
 }
 
 # ------------------------------------------------------------------------------
