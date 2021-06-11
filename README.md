@@ -32,7 +32,6 @@ This project is used to manage IAM permissions for auditor users.
     "firstname3.lastname3"    = { "roles" = ["financial_audit", "security_audit"] },
   }
   ```
-
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
   -var-file=<workspace_name>.tfvars`.
@@ -42,7 +41,7 @@ This project is used to manage IAM permissions for auditor users.
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
