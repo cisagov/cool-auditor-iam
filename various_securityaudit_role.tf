@@ -24,7 +24,6 @@ resource "aws_iam_role" "audit_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
@@ -49,7 +48,6 @@ resource "aws_iam_role" "dns_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
@@ -74,7 +72,6 @@ resource "aws_iam_role" "images_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
@@ -99,7 +96,6 @@ resource "aws_iam_role" "logarchive_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
@@ -124,7 +120,6 @@ resource "aws_iam_role" "sharedservices_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
@@ -149,7 +144,6 @@ resource "aws_iam_role" "terraform_securityaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.securityaudit_role_assume_role_doc.json
   description        = var.various_securityaudit_role_description
   name               = var.various_securityaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) SecurityAudit policy to the role
