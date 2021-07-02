@@ -135,7 +135,7 @@ No modules.
 | assume\_master\_financialaudit\_policy\_name | The name to assign the IAM policy that allows assumption of the role that allows access to the Billing policy in the Master account. | `string` | `"Master-AssumeFinancialAudit"` | no |
 | assume\_various\_securityaudit\_policy\_description | The description to associate with the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts. | `string` | `"Allow assumption of the SecurityAudit role in various accounts."` | no |
 | assume\_various\_securityaudit\_policy\_name | The name to assign the IAM policy that allows assumption of the role that allows access to the SecurityAudit policy in the various accounts. | `string` | `"Various-AssumeSecurityAudit"` | no |
-| auditors | A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  "financial\_audit" and "security\_audit".  Example: { "firstname1.lastname1" = { "roles" = [ "financial\_audit", "security\_audit" ] },  "firstname2.lastname2" = { "roles" = [ "security\_audit" ] } } | `map(map(list(string)))` | n/a | yes |
+| auditors | A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  "financial\_audit" and "security\_audit".  Example: { "firstname1.lastname1" = { "roles" = [ "financial\_audit", "security\_audit" ] },  "firstname2.lastname2" = { "roles" = [ "security\_audit" ] } }. | `map(map(list(string)))` | n/a | yes |
 | aws\_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | financial\_audit\_users\_group\_name | The name of the group to be created for financial audit users. | `string` | `"financial_auditors"` | no |
 | master\_financialaudit\_role\_description | The description to associate with the IAM role that allows access to the Billing policy in the Master account. | `string` | `"Allows sufficient access to billing information."` | no |
@@ -143,7 +143,7 @@ No modules.
 | security\_audit\_users\_group\_name | The name of the group to be created for security audit users. | `string` | `"security_auditors"` | no |
 | securityauditextras\_policy\_description | The description to associate with the IAM policy that gives access to additional permissions required by security auditors. | `string` | `"Allows access to additional resources required by security auditors."` | no |
 | securityauditextras\_policy\_name | The name to assign the IAM policy that gives access to additional permissions required by security auditors. | `string` | `"SecurityAuditExtras"` | no |
-| tags | Tags to apply to all AWS resources created | `map(string)` | `{}` | no |
+| tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | various\_securityaudit\_role\_description | The description to associate with the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `"Allows read-only access to resources for security auditors."` | no |
 | various\_securityaudit\_role\_name | The name to assign the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `"SecurityAudit"` | no |
 
@@ -151,8 +151,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| financial\_audit\_group | The group of financial auditors |
-| security\_audit\_group | The group of security auditors |
+| financial\_audit\_group | The group of financial auditors. |
+| security\_audit\_group | The group of security auditors. |
 
 ## Notes ##
 
