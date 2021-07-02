@@ -6,7 +6,7 @@
 
 variable "auditors" {
   type        = map(map(list(string)))
-  description = "A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  \"financial_audit\" and \"security_audit\".  Example: { \"firstname1.lastname1\" = { \"roles\" = [ \"financial_audit\", \"security_audit\" ] },  \"firstname2.lastname2\" = { \"roles\" = [ \"security_audit\" ] } }"
+  description = "A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  \"financial_audit\" and \"security_audit\".  Example: { \"firstname1.lastname1\" = { \"roles\" = [ \"financial_audit\", \"security_audit\" ] },  \"firstname2.lastname2\" = { \"roles\" = [ \"security_audit\" ] } }."
 }
 
 # ------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ variable "securityauditextras_policy_name" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources created"
+  description = "Tags to apply to all AWS resources created."
   default     = {}
 }
 

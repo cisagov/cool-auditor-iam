@@ -24,7 +24,6 @@ resource "aws_iam_role" "master_financialaudit_role" {
   assume_role_policy = data.aws_iam_policy_document.master_financialaudit_role_assume_role_doc.json
   description        = var.master_financialaudit_role_description
   name               = var.master_financialaudit_role_name
-  tags               = var.tags
 }
 
 # Attach (standard AWS-defined) Billing policy to the role
