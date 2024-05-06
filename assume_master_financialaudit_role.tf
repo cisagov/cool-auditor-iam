@@ -2,9 +2,9 @@
 # in the Master account.
 data "aws_iam_policy_document" "assume_master_financialaudit_role_doc" {
   statement {
-    effect = "Allow"
-
     actions = ["sts:AssumeRole"]
+
+    effect = "Allow"
 
     resources = [
       "arn:aws:iam::${local.account_ids["master"]}:role/${var.master_financialaudit_role_name}"
