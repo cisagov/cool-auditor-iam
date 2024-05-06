@@ -10,10 +10,10 @@ data "aws_iam_policy_document" "securityaudit_role_assume_role_doc" {
     ]
 
     principals {
-      type = "AWS"
       identifiers = [
         "arn:aws:iam::${local.account_ids["users"]}:root",
       ]
+      type = "AWS"
     }
   }
 }
