@@ -146,6 +146,7 @@ No modules.
 | securityauditextras\_policy\_description | The description to associate with the IAM policy that gives access to additional permissions required by security auditors. | `string` | `"Allows access to additional resources required by security auditors."` | no |
 | securityauditextras\_policy\_name | The name to assign the IAM policy that gives access to additional permissions required by security auditors. | `string` | `"SecurityAuditExtras"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
+| terraform\_state\_bucket | The name of the S3 bucket where Terraform state is stored. | `string` | n/a | yes |
 | various\_securityaudit\_role\_description | The description to associate with the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `"Allows read-only access to resources for security auditors."` | no |
 | various\_securityaudit\_role\_name | The name to assign the IAM role that allows access to the SecurityAudit policy in various AWS accounts. | `string` | `"SecurityAudit"` | no |
 
