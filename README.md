@@ -43,21 +43,21 @@ This project is used to manage IAM permissions for auditor users.
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.1 |
-| aws | ~> 4.9 |
+| aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.9 |
-| aws.audit | ~> 4.9 |
-| aws.dns | ~> 4.9 |
-| aws.images | ~> 4.9 |
-| aws.logarchive | ~> 4.9 |
-| aws.master | ~> 4.9 |
-| aws.sharedservices | ~> 4.9 |
-| aws.terraform | ~> 4.9 |
-| aws.users | ~> 4.9 |
+| aws | ~> 6.7 |
+| aws.audit | ~> 6.7 |
+| aws.dns | ~> 6.7 |
+| aws.images | ~> 6.7 |
+| aws.logarchive | ~> 6.7 |
+| aws.master | ~> 6.7 |
+| aws.sharedservices | ~> 6.7 |
+| aws.terraform | ~> 6.7 |
+| aws.users | ~> 6.7 |
 | terraform | n/a |
 
 ## Modules ##
