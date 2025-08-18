@@ -6,7 +6,11 @@
 data "aws_iam_policy_document" "financialauditextras_doc" {
   statement {
     actions = [
+      # Allows financial auditors to retrieve detailed cost and usage metrics
+      # for analysis.
       "ce:GetCostAndUsage",
+      # Allows financial auditors to access cost forecasts to support budgeting
+      # and financial planning activities.
       "ce:GetCostForecast",
     ]
     resources = [
