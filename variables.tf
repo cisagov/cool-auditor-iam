@@ -64,6 +64,20 @@ variable "financial_audit_users_group_name" {
   type        = string
 }
 
+variable "financialauditextras_policy_description" {
+  default     = "Allows access to additional resources required by financial auditors."
+  description = "The description to associate with the IAM policy that gives access to additional permissions required by financial auditors."
+  nullable    = false
+  type        = string
+}
+
+variable "financialauditextras_policy_name" {
+  default     = "FinancialAuditExtras"
+  description = "The name to assign the IAM policy that gives access to additional permissions required by financial auditors."
+  nullable    = false
+  type        = string
+}
+
 variable "master_financialaudit_role_description" {
   default     = "Allows sufficient access to billing information."
   description = "The description to associate with the IAM role that allows access to the Billing policy in the Master account."

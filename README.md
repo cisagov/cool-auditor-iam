@@ -80,6 +80,7 @@ No modules.
 | [aws_iam_policy.dns_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.images_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.logarchive_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.master_financialauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.sharedservices_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.terraform_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.users_securityauditextras_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -99,6 +100,7 @@ No modules.
 | [aws_iam_role_policy_attachment.images_securityauditextras_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.logarchive_securityaudit_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.logarchive_securityauditextras_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.master_financialauditextras_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.purchaseorder_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.sharedservices_securityaudit_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.sharedservices_securityauditextras_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -116,6 +118,7 @@ No modules.
 | [aws_caller_identity.terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.assume_master_financialaudit_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_various_securityaudit_roles_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.financialauditextras_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.master_financialaudit_role_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.securityaudit_role_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.securityauditextras_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -140,6 +143,8 @@ No modules.
 | auditors | A map containing the usernames of each auditor and a list of audit roles assigned to that user.  The currently-defined audit roles are  "financial\_audit" and "security\_audit".  Example: { "firstname1.lastname1" = { "roles" = [ "financial\_audit", "security\_audit" ] },  "firstname2.lastname2" = { "roles" = [ "security\_audit" ] } }. | `map(map(list(string)))` | n/a | yes |
 | aws\_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | financial\_audit\_users\_group\_name | The name of the group to be created for financial audit users. | `string` | `"financial_auditors"` | no |
+| financialauditextras\_policy\_description | The description to associate with the IAM policy that gives access to additional permissions required by financial auditors. | `string` | `"Allows access to additional resources required by financial auditors."` | no |
+| financialauditextras\_policy\_name | The name to assign the IAM policy that gives access to additional permissions required by financial auditors. | `string` | `"FinancialAuditExtras"` | no |
 | master\_financialaudit\_role\_description | The description to associate with the IAM role that allows access to the Billing policy in the Master account. | `string` | `"Allows sufficient access to billing information."` | no |
 | master\_financialaudit\_role\_name | The name to assign the IAM role that allows access to the Billing policy in the Master account. | `string` | `"FinancialAudit"` | no |
 | security\_audit\_users\_group\_name | The name of the group to be created for security audit users. | `string` | `"security_auditors"` | no |
