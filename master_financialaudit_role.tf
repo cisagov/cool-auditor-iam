@@ -26,6 +26,22 @@ resource "aws_iam_role" "master_financialaudit_role" {
   name               = var.master_financialaudit_role_name
 }
 
+# Attach (standard AWS-defined) AmazonS3ReadOnlyAccess policy to the role
+resource "aws_iam_role_policy_attachment" "amazons3readonly_policy_attachment" {
+  provider = aws.master
+
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+  role       = aws_iam_role.master_financialaudit_role.name
+}
+
+# Attach (standard AWS-defined) AWSOrganizationsReadOnlyAccess policy to the role
+resource "aws_iam_role_policy_attachment" "awsorganizationsreadonly_policy_attachment" {
+  provider = aws.master
+
+  policy_arn = "arn:aws:iam::aws:policy/AWSOrganizationsReadOnlyAccess"
+  role       = aws_iam_role.master_financialaudit_role.name
+}
+
 # Attach (standard AWS-defined) Billing policy to the role
 resource "aws_iam_role_policy_attachment" "billing_policy_attachment" {
   provider = aws.master
@@ -39,6 +55,15 @@ resource "aws_iam_role_policy_attachment" "purchaseorder_policy_attachment" {
   provider = aws.master
 
   policy_arn = "arn:aws:iam::aws:policy/AWSPurchaseOrdersServiceRolePolicy"
+  role       = aws_iam_role.master_financialaudit_role.name
+}
+
+# Attach (standard AWS-defined) Support Access policy to the role, which allows
+# financial auditors to open support cases with AWS to resolve billing issues
+resource "aws_iam_role_policy_attachment" "supportaccess_policy_attachment" {
+  provider = aws.master
+
+  policy_arn = "arn:aws:iam::aws:policy/AWSSupportAccess"
   role       = aws_iam_role.master_financialaudit_role.name
 }
 
