@@ -36,6 +36,23 @@ data "aws_iam_policy_document" "financialauditextras_doc" {
       "*",
     ]
   }
+
+  statement {
+    actions = [
+      # Allows financial auditors to create a bucket to store billing reports,
+      # write to it, and update the bucket policy.  The bucket name is the
+      # account ID followed by "-fpt-billing".
+      "s3:CreateBucket",
+      "s3:DeleteObject",
+      "s3:DeleteBucketPolicy",
+      "s3:PutBucketPolicy",
+      "s3:PutObject",
+    ]
+    resources = [
+      "arn:aws:s3:::${local.account_ids["master"]}-fpt-billing",
+      "arn:aws:s3:::${local.account_ids["master"]}-fpt-billing/*",
+    ]
+  }
 }
 
 # Create the FinancialAuditExtras policy in the master account
