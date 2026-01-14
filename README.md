@@ -1,6 +1,8 @@
 # cool-auditor-iam #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-auditor-iam/workflows/build/badge.svg)](https://github.com/cisagov/cool-auditor-iam/actions)
+[![License](https://img.shields.io/github/license/cisagov/cool-auditor-iam)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/cool-auditor-iam/workflows/CodeQL/badge.svg)](https://github.com/cisagov/cool-auditor-iam/actions/workflows/codeql-analysis.yml)
 
 This project is used to manage IAM permissions for auditor users.
 
